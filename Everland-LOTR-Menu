@@ -1,0 +1,56 @@
+var draw = function() {
+    for(var i = 0; i < 400; i += 10){
+        for(var j = 0; j < 400; j += 10){
+            noStroke();
+            fill(map(noise(i/100, j/100), 0.05, 1, 0, 95));
+            rect(i, j, 10, 10);
+        }
+    }
+    
+    fill(33, 33, 33);
+    ellipse(350, 60, 50, 50);
+    ellipse(320, 55, 50, 50);
+    ellipse(385, 55, 50, 50);
+    ellipse(295, 40, 50, 50);
+    ellipse(244, 10, 50, 50);
+    ellipse(265, 24, 50, 50);
+    ellipse(201, -4, 50, 50);
+    ellipse(164, -15, 50, 50);
+    ellipse(349, -15, 178, 131);
+    ellipse(164, -15, 50, 50);
+    for(var i = 80; i > 23; i--){
+        stroke(255, 170, 0, i*2-90);
+        line(317+i-80, i, 385+i, i);
+    }
+    noStroke();
+    fill(0, 0, 0);
+    beginShape();
+    vertex(-50, 400);
+    vertex(80, 350);
+    vertex(113, 336);
+    vertex(170, 306);
+    vertex(207, 279);
+    vertex(248, 221);
+    vertex(294, 142);
+    vertex(317, 76);
+    vertex(400, 74);
+    vertex(619, 400);
+    endShape();
+    
+    textAlign(CENTER, CENTER);
+    textFont(createFont("Palatino"));
+    fill(133, 133, 0);
+    textSize(50);
+    text("LORD", 137, 192);
+    text("RINGS", 287, 217);
+    textSize(20);
+    text("OF THE", 166, 221);
+    text("THE", 101, 164);
+    fill(204, 204, 0);
+    textSize(50);
+    text("LORD", 135, 190);
+    text("RINGS", 285, 215);
+    textSize(20);
+    text("OF THE", 165, 220);
+    text("THE", 100, 163);
+};
