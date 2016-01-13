@@ -1,0 +1,69 @@
+textAlign(CENTER, CENTER);
+textFont(createFont("gillsans-light"));
+rectMode(CENTER);
+
+var stars = [];
+for(var i = 0; i < 400; i += 20){
+    for(var j = 0; j < 400; j += 20){
+        stars.push({x: i + random(0, 20), y: j + random(0, 20), sz: random(1, 3), bright: random(50, 255)});
+    }
+}
+var r = random(0, 255);
+
+var button = function(x, y, sz, txt, next, txtSize){
+    stroke(255);
+    strokeWeight(2);
+    pushMatrix();
+    translate(x, y);
+    if(mouseX > x-(sz/2) && mouseX < x+(sz/2) && mouseY > y-(sz/2) && mouseY < y+(sz/2) ){
+        rotate(10);
+        fill(255, 255, 255, 30);
+    } else {
+        noFill();
+    }
+    rect(0, 0, sz, sz);
+    textSize(txtSize);
+    fill(255);
+    text(txt, 0, 0);
+    popMatrix();
+};
+
+background(0, 0, 0);
+
+for (var i = 0; i < stars.length; i++) {
+    fill(255, 255, 255, stars[i].bright);
+    noStroke();
+    ellipse(stars[i].x, stars[i].y, stars[i].sz, stars[i].sz);
+}
+
+noStroke();
+for(var i = 0; i < 420; i += 3){
+    for(var j = 0; j < 420; j += 3){
+        var n = map(noise(i/85, j/255, round(r)), 0, 1, 0, 370);
+        fill(35, 255, 255, n/3);
+        rect(i, j, 3, 3);
+    }
+}
+var northernLights = get(0, 0, 400, 400);
+
+var draw = function() {
+    image(northernLights, 0, 0);
+    
+    strokeCap(SQUARE);
+    fill(255);
+    textSize(70);
+    text("EVERLAND", 200, 200);
+    textSize(30);
+    text("THE FIVE KINGDOMS", 200, 240);
+    strokeWeight(1);
+    stroke(255);
+    line(20, 160, 380, 160);
+    line(20, 160, 20, 240);
+    line(380, 160, 380, 240);
+    line(20, 240, 60, 240);
+    line(380, 240, 340, 240);
+    noFill();
+    button(200, 325, 90, "Begin", "Choose Character", 28);
+    button(105, 325, 70, "How\nTo", "Choose Character", 23);
+    button(295, 325, 70, "About", "Choose Character", 23);
+};
